@@ -1,0 +1,51 @@
+.bodyWrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  a {
+    color: #28272C;
+    transition-duration: 0.3s;
+    text-decoration: none;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      margin: auto;
+      background: currentColor;
+      transition: width .3s;
+    }
+
+    &::before {
+      left: 50%;
+    }
+
+    &::after {
+      right: 50%;
+    }
+
+    &:hover {
+      color: #5f5e5e;
+
+      &::before,
+      &::after {
+        width: 50%;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+    }
+  }
+}
