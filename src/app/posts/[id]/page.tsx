@@ -10,6 +10,18 @@ type Props = {
   },
 }
 
+export async function getStaticPaths() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const posts = await res.json();
+
+  const paths = posts.map((post: PostData) => ({
+    params: { id: post.id.toString() },
+  }));
+
+  return { paths, fallback: false };
+}
+
+
 async function getDataPost(id: number): Promise<PostData> {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
   return res.json()
